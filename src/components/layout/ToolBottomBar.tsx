@@ -2,7 +2,7 @@ import { Banknote, CreditCard, UserPlus, Wallet } from "lucide-react"
 
 export const ToolBottomBar = () => {
   return (
-    <nav className="ios-safe-bottom absolute bottom-0 w-full bg-background-light dark:bg-background-dark/80 border-t border-slate-200 dark:border-slate-800 flex justify-around items-center px-4 h-20 z-20 md:hidden">
+    <nav className="ios-safe-bottom fixed bottom-0 w-full z-50 bg-background-light dark:bg-background-dark/80 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 flex justify-around items-center px-4 h-20 md:hidden">
       {/* Registrarse */}
       <button className="flex flex-col items-center gap-1 text-secondary">
         <UserPlus className="h-6 w-6" />
