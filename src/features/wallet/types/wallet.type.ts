@@ -7,10 +7,13 @@ export type RechargeWallet = {
     amount: number;
 } & InfoUserBase;
 
+export type Wallet = {
+    amount: number;
+    userId: string;
+    
+}
+
 export type WalletRespApi = {
     ok: boolean;
-    wallet: {
-        amount: number;
-        userId: string;
-    }
+    wallet: Wallet;
 }
