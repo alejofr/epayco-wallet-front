@@ -1,8 +1,8 @@
 import React from "react"
 import { useToast } from "@/hooks/use-toast"
 import { walletService } from "../services/wallet.service"
-import { FormRecharge } from "./FormRecharge"
 import type { RechargeWallet as RechargeWalletType } from "../types/wallet.type"
+import { FormTransaction } from "./FormTransaction"
 
 export const RechargeWallet = () => {
   const { toast } = useToast()
@@ -24,7 +24,9 @@ export const RechargeWallet = () => {
   }
 
   return (
-    <FormRecharge
+    <FormTransaction
+      title="Recargar"
+      description="Ingresa los datos para realizar la recarga."
       onSubmit={handleSubmit}
       isLoading={isLoading}
     />

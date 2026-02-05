@@ -16,12 +16,14 @@ const rechargeSchema = z.object({
     amount: z.number().min(1, "El monto mínimo es $1"),
 })
 
-interface FormRechargeProps {
+interface FormTransactionProps {
     onSubmit: (values: RechargeWallet) => Promise<boolean | void> | void
     isLoading: boolean
+    title: string
+    description: string
 }
 
-export const FormRecharge = ({ onSubmit, isLoading }: FormRechargeProps) => {
+export const FormTransaction = ({ onSubmit, isLoading, title, description }: FormTransactionProps) => {
     const form = useForm<RechargeWallet>({
         resolver: zodResolver(rechargeSchema),
         defaultValues: {
@@ -45,10 +47,10 @@ export const FormRecharge = ({ onSubmit, isLoading }: FormRechargeProps) => {
             <div className="px-8 pt-6 pb-2">
                 <div className="w-12 h-1 bg-secondary rounded-full mb-6"></div>
                 <h1 className="text-epayco-blue dark:text-white tracking-tight text-[28px] font-extrabold leading-tight text-left">
-                    Recargar Billetera
+                    {title}
                 </h1>
                 <p className="text-slate-500 dark:text-slate-400 text-base font-normal leading-relaxed pt-3">
-                    Ingresa los datos para recargar tu saldo.
+                    {description}
                 </p>
             </div>
 
