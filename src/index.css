@@ -160,3 +160,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+html{
+  background: transparent;
+}

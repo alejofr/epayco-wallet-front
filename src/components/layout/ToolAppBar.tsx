@@ -12,6 +12,9 @@ import { useTheme } from "@/components/theme-provider"
 
 const pageTitles: Record<string, string> = {
   "/client/new": "Registrar Cliente",
+  "/wallet": "Billetera",
+  "/wallet/recharge": "Recargar billetera",
+  "/wallet/payment": "Pagar billetera",
 }
 
 
@@ -78,15 +81,15 @@ export const ToolAppBar = () => {
                   <UserPlus className="mr-2 h-4 w-4" />
                   <span>Registrarse</span>
                 </MenubarItem>
-                <MenubarItem>
+                <MenubarItem onClick={() => navigate("/wallet/recharge")}>
                   <CreditCard className="mr-2 h-4 w-4" />
                   <span>Recargar</span>
                 </MenubarItem>
-                <MenubarItem>
+                <MenubarItem onClick={() => navigate("/wallet")}>
                   <Wallet className="mr-2 h-4 w-4" />
                   <span>Consultar</span>
                 </MenubarItem>
-                <MenubarItem>
+                <MenubarItem onClick={() => navigate("/wallet/payment")}>
                   <Banknote className="mr-2 h-4 w-4" />
                   <span>Realizar Pago</span>
                 </MenubarItem>

@@ -1,7 +1,8 @@
-import { FormClient } from "./FormClient"
-import { clientService } from "../services/client.service"
+
 import React from "react"
 import { useToast } from "@/hooks/use-toast"
+import { FormClient } from "./FormClient"
+import { clientService } from "../services/client.service"
 import type { ClientForm } from "../types/client-form.type"
 
 export const RegisterClient = () => {

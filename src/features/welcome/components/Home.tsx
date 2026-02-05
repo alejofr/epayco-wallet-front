@@ -10,7 +10,7 @@ import { ActionCard } from "./ActionCard"
 
 export const Home = () => {
   return (
-    <>
+    <div className="relative md:min-h-fit w-full flex-col max-w-3xl mx-auto overflow-x-hidden">
       {/* HeadlineText */}
       <div className="pt-10 pb-2">
         <h1 className="text-slate-900 dark:text-white text-[32px] font-extrabold leading-tight tracking-tight text-center">
@@ -41,6 +41,7 @@ export const Home = () => {
           title="Recargar"
           description="Agrega fondos"
           variant="secondary"
+          to="/wallet/recharge"
         />
 
         <ActionCard
@@ -48,6 +49,7 @@ export const Home = () => {
           title="Consultar"
           description="Ver estado"
           variant="primary"
+          to="/wallet"
         />
 
         <ActionCard
@@ -55,8 +57,9 @@ export const Home = () => {
           title="Realizar Pago"
           description="Paga ahora"
           variant="secondary"
+          to="/wallet/payment"
         />
       </div>
-    </>
+    </div>
   )
 }
