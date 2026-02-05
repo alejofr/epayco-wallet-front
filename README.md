@@ -48,7 +48,6 @@ src/
 ├── components/       # Componentes UI reutilizables (Botones, Inputs, Modales)
 ├── hooks/            # Hooks personalizados
 ├── lib/              # Utilidades y funciones auxiliares
-├── pages/            # Páginas de la aplicación (Rutas)
 └── types/            # Definiciones de tipos TypeScript globales
 ```
 
