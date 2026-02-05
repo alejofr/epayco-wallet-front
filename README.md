@@ -1,73 +1,84 @@
-# React + TypeScript + Vite
+# ePayco Wallet Front
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es el frontend de la billetera digital ePayco, construido con tecnologías modernas para ofrecer una experiencia rápida y segura.
 
-Currently, two official plugins are available:
+## 🚀 Cómo levantar el proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Sigue estos pasos para ejecutar el proyecto en tu entorno local:
 
-## React Compiler
+1.  **Instalar dependencias:**
+    Asegúrate de tener instalado Node.js. Luego ejecuta:
+    ```bash
+    npm install
+    # o
+    pnpm install
+    # o
+    yarn install
+    ```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2.  **Configurar variables de entorno:**
+    Crea un archivo `.env` en la raíz del proyecto basándote en `.env.example`.
 
-## Expanding the ESLint configuration
+3.  **Ejecutar el servidor de desarrollo:**
+    ```bash
+    npm run dev
+    ```
+    El proyecto estará disponible en `http://localhost:5173` (por defecto).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🔑 Variables de Entorno y API
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+El proyecto requiere la configuración de la conexión con el backend. Crea un archivo `.env` con las siguientes variables:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+VITE_URL_API=http://localhost:3001/api
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+-   `VITE_URL_API`: La URL base de la API del backend. Asegúrate de que apunte al servidor correcto.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🏗 Arquitectura del Proyecto
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+El proyecto sigue una arquitectura basada en **Features** (Características), lo que permite escalar y mantener el código de manera eficiente.
+
 ```
+src/
+├── features/         # Módulos principales de la aplicación
+│   ├── wallet/       # Lógica y componentes de la billetera (Saldo, Recargas, Pagos)
+│   ├── clients/      # Gestión de clientes y perfiles
+│   └── welcome/      # Pantallas de bienvenida y onboard
+├── components/       # Componentes UI reutilizables (Botones, Inputs, Modales)
+├── hooks/            # Hooks personalizados
+├── lib/              # Utilidades y funciones auxiliares
+├── pages/            # Páginas de la aplicación (Rutas)
+└── types/            # Definiciones de tipos TypeScript globales
+```
+
+Cada *feature* contiene sus propios componentes, servicios, tipos y hooks, manteniendo el código desacoplado.
+
+## 📦 Paquetes Utilizados
+
+A continuación se detallan las principales librerías utilizadas y su propósito:
+
+### Core & Framework
+-   **React**: Librería principal para construir la interfaz de usuario.
+-   **Vite**: Entorno de desarrollo y bundler ultrarrápido.
+-   **TypeScript**: Superset de JavaScript que añade tipado estático para mayor seguridad.
+-   **React Router**: Manejo de rutas y navegación en la aplicación.
+
+### UI & Estilos
+-   **TailwindCSS**: Framework de utilidades CSS para diseño rápido y responsivo.
+-   **Radix UI**: Primitivas de componentes accesibles y sin estilos (base para componentes UI).
+-   **Lucide React**: Conjunto de iconos ligeros y consistentes.
+-   **Next Themes**: Manejo de temas (modo oscuro/claro).
+-   **clsx / tailwind-merge**: Utilidades para combinar clases de Tailwind condicionalmente.
+-   **Sonner**: Librería para notificaciones tipo "toast" elegantes.
+
+### Gestión de Estado y Formularios
+-   **React Hook Form**: Manejo eficiente de formularios con validación.
+-   **Zod**: Esquemas de validación de datos (integrado con React Hook Form).
+
+### Comunicación
+-   **Axios**: Cliente HTTP para realizar peticiones a la API.
+
+### Otros
+-   **Input OTP**: Componente especializado para entradas de códigos OTP.
+-   **ESLint / Prettier**: Herramientas para asegurar la calidad y formato del código.
